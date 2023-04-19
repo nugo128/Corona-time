@@ -17,8 +17,6 @@
             <input type="password" name="password" placeholder="Fill in password" class="w-full px-6 py-4 mt-3 rounded-md border-gray-300 border-solid border focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500">
             <label for="password_confirmation" class="font-bold block mt-4">Repeat Password</label>
             <input type="password" name="password_confirmation" placeholder="Repeat Password" class="w-full px-6 py-4 mt-3 rounded-md border-gray-300 border-solid border focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500">
-            <input type="checkbox" class="mt-6 mr-4">
-            <label for="remember" class="font-bold">Remember this device</label>
 
             <button type="submit" class="w-full h-14 bg-green-500 hover:bg-green-600 text-white font-bold mt-6 rounded-md">SIGN UP</button>
           </form>

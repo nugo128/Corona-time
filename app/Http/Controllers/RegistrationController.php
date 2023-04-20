@@ -7,6 +7,7 @@ use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use App\Mail\ConfirmationEmail;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 
 class RegistrationController extends Controller
 {
@@ -20,6 +21,7 @@ class RegistrationController extends Controller
 		$user->confirmation_token = Str::random(32);
 		$user->confirmed = false;
 		$user->save();
+		Session::put('confirmed', false);
 		Mail::to($user->email)->send(new ConfirmationEmail($user));
 		return redirect()->route('email-sent');
 	}
@@ -33,10 +35,11 @@ class RegistrationController extends Controller
 		]);
 		$user->save();
 
-		return redirect()->route('home')->with('success', 'Account confirmed successfully. Welcome!');
+		Session::put('confirmed', true);
+		return redirect()->route('email-sent');
 	}
 
-	public function sentEmail(User $user)
+	public function sentEmail()
 	{
 		return view('registration.confirm', );
 	}

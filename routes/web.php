@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RegistrationController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,3 +23,5 @@ Route::post('/register', [RegistrationController::class, 'store'])->name('regist
 Route::get('/confirmation', [RegistrationController::class, 'show'])->name('conf-mail');
 Route::get('/confirm', [RegistrationController::class, 'sentEmail'])->name('email-sent');
 Route::get('/confirm/{token}', [RegistrationController::class, 'confirm'])->name('confirm');
+Route::get('/login', [AuthController::class, 'index'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login-post');

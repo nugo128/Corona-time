@@ -29,7 +29,7 @@
         </ul>
     </div>
 @endif
-          <p class="mt-6">Already have an account? <a href="#" class="font-bold">Log in</a></p>
+          <p class="mt-6">Already have an account? <a href="{{route('login')}}" class="font-bold">Log in</a></p>
         </div>
       </div>
     </section>

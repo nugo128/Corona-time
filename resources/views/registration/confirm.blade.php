@@ -15,7 +15,7 @@
         <img src="{{asset('images/icons8-checkmark.gif')}}" alt="check">
     <p>Your account is confirmed, you can sign in</p>
     </div>
-    <a  href="#" type="submit" class="w-full h-14 bg-green-500 hover:bg-green-600 text-white font-bold mt-6 rounded-md text-center"><p class="pt-4">Log In</p></a>
+    <a  href="{{route('login')}}" type="submit" class="w-full h-14 bg-green-500 hover:bg-green-600 text-white font-bold mt-6 rounded-md text-center"><p class="pt-4">Log In</p></a>
 
 </div>
 @endif

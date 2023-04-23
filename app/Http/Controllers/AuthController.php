@@ -17,7 +17,7 @@ class AuthController extends Controller
 		$fieldType = filter_var($attributes['user'], FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 		if (auth()->attempt([$fieldType => $attributes['user'], 'password' => $attributes['password']], request()->get('remember'))) {
 			request()->session()->regenerate();
-			return redirect()->route('register');
+			return redirect()->route('dashboard');
 		}
 
 		return back()->withErrors([

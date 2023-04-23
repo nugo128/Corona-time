@@ -30,7 +30,7 @@
                 <input type="checkbox" name="remember" id="remember" class="mr-2">
               <label for="remember" class="block text-gray-700 font-bold">Remember</label>
             </div>
-              <a href="#" class="font-bold">Forgot your password?</a>
+              <a href="{{route('password.request')}}" class="font-bold">Forgot your password?</a>
             </div>
             <button type="submit" class="w-full h-14 bg-green-500 hover:bg-green-600 text-white font-bold mt-6 rounded-md">log in</button>
           </form>

@@ -20,6 +20,7 @@ class RegistrationController extends Controller
 		$user->password = bcrypt($attributes['password']);
 		$user->confirmation_token = Str::random(32);
 		$user->confirmed = false;
+		$user->reset_token = '';
 		$user->save();
 		Session::put('confirmed', false);
 		Mail::to($user->email)->send(new ConfirmationEmail($user));

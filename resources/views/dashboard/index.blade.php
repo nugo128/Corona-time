@@ -1,12 +1,12 @@
 <x-layout>
     <div class="flex flex-col px-14 py-5">
-        <x-dashboard-header></x-dashboard-header>
+        <x-dashboard-header header='Worldwide Statistics'></x-dashboard-header>
         <div class="flex mt-8 gap-10">
             <a href="#" class="h-5">
                 <p class="pb-1">Worldwide</p>
                 <div class="bg-black w-full pt-1"></div>
             </a>
-            <a href="#">
+            <a href="{{route('dashboard-by-c')}}">
                 <p>By Country</p><span></span>
             </a>
         </div>

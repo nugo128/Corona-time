@@ -16,6 +16,12 @@ class DashboardController extends Controller
 		return view('dashboard.index', compact('recovered', 'deaths', 'newCases'));
 	}
 
+	public function country()
+	{
+		$statistics = Statistics::all();
+		return view('dashboard.dashboard-by-country', compact('statistics'));
+	}
+
 public function getDataFromApi()
 {
 	$response = Http::get('https://devtest.ge/countries');

@@ -1,4 +1,4 @@
-
+@props(['header'])
 <div class="flex justify-between">
 <x-logo></x-logo>
 <div class="flex gap-3 items-center">
@@ -8,6 +8,6 @@
 </div>
 </div>
 
-    <h2 class="font-bold mt-10">Worldwide Statistics</h2>
+    <h2 class="font-bold mt-10">{{$header}}</h2>
 
 

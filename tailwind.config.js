@@ -10,6 +10,9 @@ module.exports = {
       width: {
         '200': '58rem',
         '150': '36rem'
+      },
+      height:{
+        'screenx': '70vh'
       }
     },
   },

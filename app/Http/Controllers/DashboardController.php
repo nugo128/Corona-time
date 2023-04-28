@@ -3,13 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Statistics;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
 class DashboardController extends Controller
 {
 	public function index()
 	{
-		return view('dashboard.index');
+		$recovered = DB::table('statistics')->sum('recovered');
+		$deaths = DB::table('statistics')->sum('deaths');
+		$newCases = DB::table('statistics')->sum('new_cases');
+		return view('dashboard.index', compact('recovered', 'deaths', 'newCases'));
 	}
 
 public function getDataFromApi()

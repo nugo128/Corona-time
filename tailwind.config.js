@@ -12,7 +12,7 @@ module.exports = {
         '150': '36rem'
       },
       height:{
-        'screenx': '70vh'
+        'screenx': '60vh'
       }
     },
   },

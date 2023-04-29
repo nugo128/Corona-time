@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Statistics;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
@@ -16,10 +17,33 @@ class DashboardController extends Controller
 		return view('dashboard.index', compact('recovered', 'deaths', 'newCases'));
 	}
 
-	public function country()
+	public function country(Request $request)
 	{
-		$statistics = Statistics::all();
-		return view('dashboard.dashboard-by-country', compact('statistics'));
+		$recovered = DB::table('statistics')->sum('recovered');
+		$deaths = DB::table('statistics')->sum('deaths');
+		$newCases = DB::table('statistics')->sum('new_cases');
+
+		$sort = $request->query('sort', 'location_asc');
+		$search = $request->query('search');
+
+		if (strpos($sort, '_asc') !== false) {
+			$column = str_replace('_asc', '', $sort);
+			$direction = 'asc';
+		} else {
+			$column = str_replace('_desc', '', $sort);
+			$direction = 'desc';
+		}
+		$query = DB::table('statistics');
+		if ($search) {
+			$query->where('location', 'like', '%' . $search . '%')
+				  ->orWhere('new_cases', 'like', '%' . $search . '%')
+				  ->orWhere('deaths', 'like', '%' . $search . '%')
+				  ->orWhere('recovered', 'like', '%' . $search . '%');
+		}
+		$query->orderBy($column, $direction);
+
+		$statistics = $query->get();
+		return view('dashboard.dashboard-by-country', compact('statistics', 'sort', 'direction', 'recovered', 'deaths', 'newCases', 'search'));
 	}
 
 public function getDataFromApi()

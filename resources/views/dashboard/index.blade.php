@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="flex flex-col px-14 py-5">
+    <div class="flex flex-col px-5 md:px-14 py-5">
         <x-dashboard-header header='Worldwide Statistics'></x-dashboard-header>
         <div class="flex mt-8 gap-10">
             <a href="#" class="h-5">
@@ -11,8 +11,8 @@
             </a>
         </div>
 
-        <div class="flex justify-between gap-16 mt-20">
-            <div class="flex flex-col gap-5 justify-center items-center bg-blue-50 py-10 w-full">
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mt-20">
+            <div class="col-span-2 md:col-span-1 flex flex-col gap-5 justify-center items-center bg-blue-50 py-10 w-full">
 
                 <svg width="90" height="64" viewBox="0 0 90 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <svg width="92" height="50" viewBox="0 0 92 50" fill="none"
@@ -37,7 +37,7 @@
                 <p>New Cases</p>
                 <p>{{ $newCases }}</p>
             </div>
-            <div class="flex flex-col gap-5 justify-center items-center bg-green-50 py-10 w-full">
+            <div class="col-span-1 flex flex-col gap-5 justify-center items-center bg-green-50 py-10 w-full">
 
                 <svg width="90" height="41" viewBox="0 0 90 41" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
@@ -61,7 +61,7 @@
                 <p>Recovered</p>
                 <p>{{ $recovered }}</p>
             </div>
-            <div class="flex flex-col gap-5 justify-center items-center bg-yellow-50 py-10 w-full">
+            <div class="col-span-1 flex flex-col gap-5 justify-center items-center bg-yellow-50 py-10 w-full">
                 <svg width="90" height="51" viewBox="0 0 90 51" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <svg width="92" height="37" viewBox="0 0 92 37" fill="none"

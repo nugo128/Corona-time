@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="flex flex-col px-14 py-5">
+    <div class="flex flex-col px-3 md:px-14 py-5">
         <x-dashboard-header header='Statistics by country'></x-dashboard-header>
         <div class="flex mt-8 gap-10">
             <a href="{{ route('dashboard') }}" class="h-5">
@@ -30,7 +30,7 @@
                     <tr>
                     <td class="py-4 text-xs xl:text-sm whitespace-nowrap font-semibold">
                             <a href="?sort={{ $sort == 'location_asc' ? 'location_desc' : 'location_asc' }}&search={{ $search }}" class="flex items-center gap-2">
-                                <p class="px-4">location</p>
+                                <p class="px-1 md:px-4">location</p>
                                     <div class="flex flex-col gap-1">
                                         <div>
                                             <svg width="10" height="6" viewBox="0 0 10 6" fill="none"
@@ -53,7 +53,7 @@
                         <td class="py-4 text-xs xl:text-sm whitespace-nowrap font-semibold">
                             <a href="?sort={{ $sort == 'new_cases_asc' ? 'new_cases_desc' : 'new_cases_asc' }}&search={{ $search }}" class="flex items-center gap-2">
                               
-                                <p class="px-4">new</p>
+                                <p class="px-1 md:px-4">new</p>
                                     <div class="flex flex-col gap-1">
                                         <div>
                                             <svg width="10" height="6" viewBox="0 0 10 6" fill="none"
@@ -75,7 +75,7 @@
                         </td>
                         <td class="py-4 text-xs xl:text-sm whitespace-nowrap font-semibold">
                             <a href="?sort={{ $sort == 'deaths_asc' ? 'deaths_desc' : 'deaths_asc' }}&search={{ $search }}" class="flex items-center gap-2">
-                            <p class="px-4">death</p>
+                            <p class="px-1 md:px-4">death</p>
                                     <div class="flex flex-col gap-1">
                                         <div>
                                             <svg width="10" height="6" viewBox="0 0 10 6" fill="none"
@@ -97,7 +97,7 @@
                         </td>
                         <td class="py-4 text-xs xl:text-sm whitespace-nowrap font-semibold">
                             <a href="?sort={{ $sort == 'recovered_asc' ? 'recovered_desc' : 'recovered_asc' }}&search={{ $search }}" class="flex items-center gap-2">
-                            <p class="px-4">recovered</p>
+                            <p class="px-1 md:px-4">recovered</p>
                                     <div class="flex flex-col gap-1">
                                         <div>
                                             <svg width="10" height="6" viewBox="0 0 10 6" fill="none"
@@ -123,17 +123,17 @@
                 <tbody
                     class="bg-white divide-y divide-gray-200 max-h-64 overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
                     <tr>
-                    <td class="p-4 w-1/4">Worldwide</td>
-                    <td class="p-4 w-1/4">{{$newCases}}</td>
-                    <td class="p-4 w-1/4">{{$deaths}}</td>
-                    <td class="p-4 w-1/4">{{$recovered}}</td>
+                    <td class="py-4 px-1 md:p-4 w-1/4">Worldwide</td>
+                    <td class="py-4 px-1 md:p-4 w-1/4">{{$newCases}}</td>
+                    <td class="py-4 px-1 md:p-4 w-1/4">{{$deaths}}</td>
+                    <td class="py-4 px-1 md:p-4 w-1/4">{{$recovered}}</td>
                     </tr>
                     @foreach ($statistics as $item)
                         <tr>
-                            <td class="p-4 w-1/4">{{ $item->location }}</td>
-                            <td class="p-4 w-1/4"> {{ $item->new_cases }}</td>
-                            <td class="p-4 w-1/4">{{ $item->deaths }}</td>
-                            <td class="p-4 w-1/4">{{ $item->recovered }}</td>
+                            <td class="py-4 px-1 md:p-4 w-1/4">{{ $item->location }}</td>
+                            <td class="py-4 px-1 md:p-4 w-1/4"> {{ $item->new_cases }}</td>
+                            <td class="py-4 px-1 md:p-4 w-1/4">{{ $item->deaths }}</td>
+                            <td class="py-4 px-1 md:p-4 w-1/4">{{ $item->recovered }}</td>
                         </tr>
                     @endforeach
                 </tbody>

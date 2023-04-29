@@ -24,4 +24,10 @@ class AuthController extends Controller
 			'login' => 'Invalid credentials',
 		]);
 	}
+
+	public function logout()
+	{
+		auth()->logout();
+		return redirect()->route('login');
+	}
 }

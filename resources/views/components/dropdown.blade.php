@@ -5,9 +5,9 @@
   </button>
 
   <div class="origin-top-right absolute right-0 mt-12 w-28 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden" id="language-menu">
-    <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="language-toggle">
-      <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" data-value="georgian">Georgian</a>
-      <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" data-value="english">English</a>
+    <div class="py-1" aria-orientation="vertical" aria-labelledby="language-toggle">
+      <a href="{{ route('setLocale', ['locale' => 'ka']) }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Georgian</a>
+      <a href="{{ route('setLocale', ['locale' => 'en']) }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">English</a>
     </div>
   </div>
 </div>

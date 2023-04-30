@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ResetPasswordController;
 use Illuminate\Support\Facades\Route;
@@ -38,3 +39,5 @@ Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/dashboard-by-country', [DashboardController::class, 'country'])->name('dashboard-by-c');
+
+Route::get('locale/{locale}', [LocaleController::class, 'setLocale'])->name('setLocale');

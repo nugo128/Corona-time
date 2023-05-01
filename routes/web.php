@@ -33,9 +33,11 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
 Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+Route::get('/password/email-sent', [ForgotPasswordController::class, 'send'])->name('send');
 
 Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
 Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
+Route::get('/password/changed', [ResetPasswordController::class, 'change'])->name('changed');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/dashboard-by-country', [DashboardController::class, 'country'])->name('dashboard-by-c');

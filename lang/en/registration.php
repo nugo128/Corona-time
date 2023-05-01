@@ -15,4 +15,6 @@ return [
 	'signup'                                      => 'SIGN UP',
 	'already'                                     => 'Already have an account?',
 	'login'                                       => 'Log in',
+	'confirm-sent'                                => 'We have sent you a confirmation email',
+	'confirmed'                                   => 'Your account is confirmed',
 ];

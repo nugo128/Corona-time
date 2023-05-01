@@ -24,7 +24,7 @@
         <form action="{{route('logout')}}" method="post">
 
 @csrf
-<button type="submit">LOG OUT</button>
+<button type="submit"><p>{{__('auth.logout')}}</p></button>
 </form>
     </div>
 </div>

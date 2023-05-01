@@ -1,5 +1,6 @@
 
 <x-layout>
+<div class="w-full flex items-center justify-center py-10"><x-dropdown></x-dropdown> </div>
 <div class="w-full flex flex-col items-center gap-96">
 <x-logo></x-logo>
 @if (Illuminate\Support\Facades\Session::get('confirmed') == 0)

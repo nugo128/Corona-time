@@ -1,7 +1,9 @@
 <x-layout>
   <div class="flex gap-40 items-center h-screen flex-col pt-10">
-    <x-dropdown class="fixed"></x-dropdown>
-    <x-logo></x-logo>
+  <div class="flex justify-between gap-20">
+        <x-logo></x-logo>
+        <x-dropdown></x-dropdown>
+      </div> 
 
       
       

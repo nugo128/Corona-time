@@ -1,7 +1,9 @@
 <x-layout>
   <div class=" min-h-screen flex flex-col items-center py-12 sm:px-6 lg:px-8">
-    <x-dropdown></x-dropdown>
-      <x-logo></x-logo>
+  <div class="flex justify-between gap-20">
+        <x-logo></x-logo>
+        <x-dropdown></x-dropdown>
+      </div> 
     <div class="py-12 sm:mx-auto sm:w-full sm:max-w-md">
       <div class=" py-8 px-4  sm:rounded-lg sm:px-10">
         <h2 class="text-center pb-5 font-bold text-lg mb-6">{{ __('emails.reset') }}</h2>

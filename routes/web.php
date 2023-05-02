@@ -45,3 +45,4 @@ Route::middleware('guest')->group(
 		Route::post('/login', [AuthController::class, 'login'])->name('login-post');
 	}
 );
+Route::redirect('/', 'login');

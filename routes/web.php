@@ -19,9 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-	return view('registration.index');
-})->name('home');
+Route::get('/register', [RegistrationController::class, 'index'])->name('register');
 
 Route::post('/register', [RegistrationController::class, 'store'])->name('register');
 Route::get('/confirmation', [RegistrationController::class, 'show'])->name('conf-mail');

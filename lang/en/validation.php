@@ -11,6 +11,7 @@ return [
 	| as the size rules. Feel free to tweak each of these messages here.
 	|
 	*/
+	'invalid-email'   => "We can't find a user with that email address",
 	'invalid'         => 'Invalid Credentials',
 	'accepted'        => 'The :attribute field must be accepted.',
 	'accepted_if'     => 'The :attribute field must be accepted when :other is :value.',

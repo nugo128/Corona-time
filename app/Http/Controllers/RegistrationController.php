@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Session;
 
 class RegistrationController extends Controller
 {
+	public function index()
+	{
+		return view('registration.index');
+	}
+
 	public function store(RegisterRequest $request)
 	{
 		$attributes = $request->validated();

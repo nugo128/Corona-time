@@ -15,6 +15,11 @@ class ForgotPasswordController extends Controller
 		return view('password.email');
 	}
 
+	public function send()
+	{
+		return view('password.email-sent');
+	}
+
 	public function sendResetLinkEmail(Request $request)
 	{
 		$this->validateEmail($request);
@@ -34,7 +39,7 @@ class ForgotPasswordController extends Controller
 
 		Mail::to($user->email)->send(new ResetPasswordEmail($resetUrl));
 
-		return back()->with('status', trans('passwords.sent'));
+		return redirect()->route('send');
 	}
 
 	protected function sendResetLinkResponse($response)

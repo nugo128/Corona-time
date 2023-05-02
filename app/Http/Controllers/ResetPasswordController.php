@@ -15,6 +15,12 @@ class ResetPasswordController extends Controller
 		);
 	}
 
+	public function change()
+	{
+		return view('password.password-changed');
+	}
+
+
 	public function reset(Request $request)
 	{
 		$request->validate([
@@ -34,6 +40,6 @@ class ResetPasswordController extends Controller
 		$user->reset_token = '';
 		$user->save();
 
-		return redirect()->route('home')->with('status', 'Your password has been reset.');
+		return redirect()->route('changed');
 	}
 }

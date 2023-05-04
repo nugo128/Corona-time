@@ -14,7 +14,7 @@ class MyCommand extends Command
 	 *
 	 * @var string
 	 */
-	protected $signature = 'app:my-command';
+	protected $signature = 'renew-data';
 
 	/**
 	 * The console command description.

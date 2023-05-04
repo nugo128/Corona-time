@@ -47,13 +47,6 @@ class ForgotPasswordController extends Controller
 		return back()->with('status', trans($response));
 	}
 
-protected function sendResetLinkFailedResponse(Request $request, $response)
-{
-	return back()->withErrors(
-		['email' => trans($response)]
-	);
-}
-
 protected function validateEmail(Request $request)
 {
 	$request->validate(['email' => 'required|email']);

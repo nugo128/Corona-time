@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Statistics;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\App;
 
 class DashboardController extends Controller
@@ -35,12 +37,17 @@ class DashboardController extends Controller
 		$query = DB::table('statistics');
 		if ($search) {
 			$query->where('location->en', 'like', '%' . $search . '%')
+				->orWhere('location->ka', 'like', '%' . $search . '%')
 				  ->orWhere('new_cases', 'like', '%' . $search . '%')
 				  ->orWhere('deaths', 'like', '%' . $search . '%')
 				  ->orWhere('recovered', 'like', '%' . $search . '%');
 		}
 		$locale = App::getLocale();
-		$query->orderByRaw("CAST(JSON_EXTRACT(`location`, '$.\"$locale\"') AS CHAR) $direction");
+		if ($column == 'location') {
+			$query->orderByRaw("CAST(JSON_EXTRACT(`location`, '$.\"$locale\"') AS CHAR) $direction");
+		} else {
+			$query->orderBy($column, $direction);
+		}
 
 		$statistics = $query->get();
 		$statistics = $statistics->map(function ($item) use ($locale) {
@@ -49,5 +56,23 @@ class DashboardController extends Controller
 			return $item;
 		});
 		return view('dashboard.dashboard-by-country', compact('statistics', 'sort', 'direction', 'recovered', 'deaths', 'newCases', 'search'));
+	}
+
+	public function saveDataToDatabase()
+	{
+		$response = Http::get('https://devtest.ge/countries');
+		$data = $response->json();
+
+		foreach ($data as $item) {
+			$response2 = Http::post('https://devtest.ge/get-country-statistics', [
+				'code' => $item['code'],
+			]);
+			$statistics = new Statistics();
+			$statistics->location = $item['name'];
+			$statistics->new_cases = $response2->json()['confirmed'];
+			$statistics->recovered = $response2->json()['recovered'];
+			$statistics->deaths = $response2->json()['deaths'];
+			$statistics->save();
+		}
 	}
 }

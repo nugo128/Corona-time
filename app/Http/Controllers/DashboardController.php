@@ -35,12 +35,17 @@ class DashboardController extends Controller
 		$query = DB::table('statistics');
 		if ($search) {
 			$query->where('location->en', 'like', '%' . $search . '%')
+				->orWhere('location->ka', 'like', '%' . $search . '%')
 				  ->orWhere('new_cases', 'like', '%' . $search . '%')
 				  ->orWhere('deaths', 'like', '%' . $search . '%')
 				  ->orWhere('recovered', 'like', '%' . $search . '%');
 		}
 		$locale = App::getLocale();
-		$query->orderByRaw("CAST(JSON_EXTRACT(`location`, '$.\"$locale\"') AS CHAR) $direction");
+		if ($column == 'location') {
+			$query->orderByRaw("CAST(JSON_EXTRACT(`location`, '$.\"$locale\"') AS CHAR) $direction");
+		} else {
+			$query->orderBy($column, $direction);
+		}
 
 		$statistics = $query->get();
 		$statistics = $statistics->map(function ($item) use ($locale) {

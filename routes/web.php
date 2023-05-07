@@ -8,18 +8,9 @@ use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ResetPasswordController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
 Route::get('locale/{locale}', [LocaleController::class, 'setLocale'])->name('setLocale');
+Route::redirect('/', 'login');
+
 Route::middleware('auth')->group(
 	function () {
 		Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -29,19 +20,29 @@ Route::middleware('auth')->group(
 );
 Route::middleware('guest')->group(
 	function () {
-		Route::view('/register', 'registration.index')->name('register');
-		Route::post('/register', [RegistrationController::class, 'store'])->name('register');
+		Route::prefix('register')->group(function () {
+			Route::view('/', 'registration.index')->name('register');
+			Route::post('/', [RegistrationController::class, 'store'])->name('register');
+		});
+
+		Route::prefix('confirm')->group(function () {
+			Route::view('/', 'registration.confirm')->name('email-sent');
+			Route::get('/{token}', [RegistrationController::class, 'confirm'])->name('confirm');
+		});
 		Route::get('/confirmation', [RegistrationController::class, 'show'])->name('conf-mail');
-		Route::view('/confirm', 'registration.confirm')->name('email-sent');
-		Route::get('/confirm/{token}', [RegistrationController::class, 'confirm'])->name('confirm');
-		Route::view('/login', 'login.index')->name('login');
-		Route::view('password/reset', 'password.email')->name('password.request');
-		Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
-		Route::view('/password/email-sent', 'password.email-sent')->name('send');
-		Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
-		Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
-		Route::view('/password/changed', 'password.password-changed')->name('changed');
-		Route::post('/login', [AuthController::class, 'login'])->name('login-post');
+
+		Route::prefix('password')->group(function () {
+			Route::view('/reset', 'password.email')->name('password.request');
+			Route::post('/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+			Route::view('/email-sent', 'password.email-sent')->name('send');
+			Route::get('/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+			Route::post('/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
+			Route::view('/changed', 'password.password-changed')->name('changed');
+		});
+
+		Route::prefix('login')->group(function () {
+			Route::view('/', 'login.index')->name('login');
+			Route::post('/', [AuthController::class, 'login'])->name('login-post');
+		});
 	}
 );
-Route::redirect('/', 'login');

@@ -6,11 +6,6 @@ use App\Http\Requests\LoginRequest;
 
 class AuthController extends Controller
 {
-	public function index()
-	{
-		return view('login.index');
-	}
-
 	public function login(LoginRequest $request)
 	{
 		$attributes = $request->validated();

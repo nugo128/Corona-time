@@ -11,11 +11,6 @@ use Illuminate\Support\Facades\Session;
 
 class RegistrationController extends Controller
 {
-	public function index()
-	{
-		return view('registration.index');
-	}
-
 	public function store(RegisterRequest $request)
 	{
 		$attributes = $request->validated();
@@ -43,10 +38,5 @@ class RegistrationController extends Controller
 
 		Session::put('confirmed', true);
 		return redirect()->route('email-sent');
-	}
-
-	public function sentEmail()
-	{
-		return view('registration.confirm', );
 	}
 }

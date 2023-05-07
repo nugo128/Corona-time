@@ -31,6 +31,6 @@
 </div>
 </div>
 
-    <h2 class="font-bold mt-10">{{$header}}</h2>
+    <h2 class="font-bold mt-10 text-xl">{{$header}}</h2>
 
 

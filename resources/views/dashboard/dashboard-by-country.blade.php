@@ -1,13 +1,13 @@
 <x-layout>
     <div class="flex flex-col px-3 md:px-14 py-5">
-        <x-dashboard-header header='{{__("statistics.stats-by-c")}}'></x-dashboard-header>
+        <x-dashboard-header header='{{__("statistics.stats_by_country")}}'></x-dashboard-header>
         <div class="flex mt-8 gap-10">
             <a href="{{ route('dashboard') }}" class="h-5">
                 <p class="pb-1">{{__("statistics.worldwide")}}</p>
 
             </a>
             <a href="">
-                <p>{{__("statistics.by-country")}}</p><span></span>
+                <p class="font-bold">{{__("statistics.by_country")}}</p><span></span>
                 <div class="bg-black w-full pt-1 mt-1"></div>
             </a>
         </div>
@@ -25,13 +25,13 @@
 </form>
 
         <div class="pb-10 h-screenx overflow-x-auto table-container border rounded-lg border-gray-100">
-            <table class="table w-full">
+            <table class="table w-full text-xs p-0">
                 <thead class="bg-gray-200">
                     <tr>
                     <td class="py-4 text-xs xl:text-sm whitespace-nowrap font-semibold">
                             <a href="?sort={{ $sort == 'location_asc' ? 'location_desc' : 'location_asc' }}&search={{ $search }}" class="flex items-center gap-2">
-                                <p class="px-1 md:px-4">{{__("statistics.location")}}</p>
-                                    <div class="flex flex-col gap-1">
+                                <p class="px-1 md:px-4 text-2xs p-0 md:text-sm">{{__("statistics.location")}}</p>
+                                <div class="flex flex-col gap-1">
                                         <div>
                                             <svg width="10" height="6" viewBox="0 0 10 6" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -53,7 +53,7 @@
                         <td class="py-4 text-xs xl:text-sm whitespace-nowrap font-semibold">
                             <a href="?sort={{ $sort == 'new_cases_asc' ? 'new_cases_desc' : 'new_cases_asc' }}&search={{ $search }}" class="flex items-center gap-2">
                               
-                                <p class="px-1 md:px-4">{{__("statistics.new")}}</p>
+                                <p class="px-1 md:px-4 text-2xs p-0 md:text-sm">{{__("statistics.new")}}</p>
                                     <div class="flex flex-col gap-1">
                                         <div>
                                             <svg width="10" height="6" viewBox="0 0 10 6" fill="none"
@@ -75,7 +75,7 @@
                         </td>
                         <td class="py-4 text-xs xl:text-sm whitespace-nowrap font-semibold">
                             <a href="?sort={{ $sort == 'deaths_asc' ? 'deaths_desc' : 'deaths_asc' }}&search={{ $search }}" class="flex items-center gap-2">
-                            <p class="px-1 md:px-4">{{__("statistics.deaths")}}</p>
+                            <p class="px-1 md:px-4 text-2xs p-0 md:text-sm">{{__("statistics.deaths")}}</p>
                                     <div class="flex flex-col gap-1">
                                         <div>
                                             <svg width="10" height="6" viewBox="0 0 10 6" fill="none"
@@ -97,7 +97,7 @@
                         </td>
                         <td class="py-4 text-xs xl:text-sm whitespace-nowrap font-semibold">
                             <a href="?sort={{ $sort == 'recovered_asc' ? 'recovered_desc' : 'recovered_asc' }}&search={{ $search }}" class="flex items-center gap-2">
-                            <p class="px-1 md:px-4">{{__("statistics.recovered")}}</p>
+                            <p class="md:px-4 text-2xs md:text-sm">{{__("statistics.recovered")}}</p>
                                     <div class="flex flex-col gap-1">
                                         <div>
                                             <svg width="10" height="6" viewBox="0 0 10 6" fill="none"
@@ -123,17 +123,17 @@
                 <tbody
                     class="bg-white divide-y divide-gray-200 max-h-64 overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
                     <tr>
-                    <td class="py-4 px-1 md:p-4 w-1/4">Worldwide</td>
-                    <td class="py-4 px-1 md:p-4 w-1/4">{{$newCases}}</td>
-                    <td class="py-4 px-1 md:p-4 w-1/4">{{$deaths}}</td>
-                    <td class="py-4 px-1 md:p-4 w-1/4">{{$recovered}}</td>
+                    <td class="lg:py-4 p-1  md:p-4 w-1/4 text-2xs md:text-sm">Worldwide</td>
+                    <td class="lg:py-4 p-1 md:p-4 w-1/4 text-2xs md:text-sm">{{$newCases}}</td>
+                    <td class="lg:py-4 p-1 md:p-4 w-1/4 text-2xs md:text-sm">{{$deaths}}</td>
+                    <td class="lg:py-4 p-1 md:p-4 w-1/4 text-2xs md:text-sm">{{$recovered}}</td>
                     </tr>
                     @foreach ($statistics as $item)
                         <tr>
-                            <td class="py-4 px-1 md:p-4 w-1/4">{{ $item->location }}</td>
-                            <td class="py-4 px-1 md:p-4 w-1/4"> {{ $item->new_cases }}</td>
-                            <td class="py-4 px-1 md:p-4 w-1/4">{{ $item->deaths }}</td>
-                            <td class="py-4 px-1 md:p-4 w-1/4">{{ $item->recovered }}</td>
+                            <td class="lg:py-4 p-1 md:p-4 w-1/4 text-2xs md:text-sm">{{ $item->location }}</td>
+                            <td class="lg:py-4 p-1 md:p-4 w-1/4 text-2xs md:text-sm"> {{ $item->new_cases }}</td>
+                            <td class="lg:py-4 p-1 md:p-4 w-1/4 text-2xs md:text-sm">{{ $item->deaths }}</td>
+                            <td class="lg:py-4 p-1 md:p-4 w-1/4 text-2xs md:text-sm">{{ $item->recovered }}</td>
                         </tr>
                     @endforeach
                 </tbody>

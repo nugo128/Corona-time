@@ -1,14 +1,14 @@
 <x-layout>
 <div class="flex justify-between">
-    <section class="py-14 min-h-screen flex justify-center sm:w-200">
-      <div class="bg-white rounded-md w-full sm:max-w-md px-4 sm:px-6 lg:px-8">
+    <section class="py-14 min-h-screen lg:pl-14 flex sm:w-200 pl-1">
+      <div class="bg-white rounded-md w-full sm:max-w-md px-4 sm:px-4 lg:px-4">
       <div class="flex justify-between">
         <x-logo></x-logo>
         <x-dropdown></x-dropdown>
       </div> 
         <div class="mt-12">
           <h2 class="font-bold text-lg">{{__('login.welcome')}}</h2>
-          <p class="text-gray-600 mt-3">{{__('login.info')}}</p>
+          <p class="text-gray-600 mt-3 text-xs">{{__('login.info')}}</p>
           <form action="{{route('login-post')}}" method="POST" class="mt-4">
             @csrf
             <div class="mt-4">
@@ -41,21 +41,21 @@
             <div class="mt-4 flex items-center justify-between">
               <div class="flex">
                 <input type="checkbox" name="remember" id="remember" class="mr-2">
-              <label for="remember" class="block text-gray-700 font-bold">{{__('login.remember')}}</label>
+              <label for="remember" class="block text-gray-700 font-bold text-xs">{{__('login.remember')}}</label>
             </div>
-              <a href="{{route('password.request')}}" class="font-bold">{{__('login.forgot')}}</a>
+              <a href="{{route('password.request')}}" class="font-bold text-xs">{{__('login.forgot')}}</a>
             </div>
             <button type="submit" class="w-full h-14 bg-green-500 hover:bg-green-600 text-white font-bold mt-6 rounded-md">{{__('login.login')}}</button>
           </form>
           <div class="mt-6">
           </div>
-          <div class="mt-6 flex gap-1">
-            <p>{{__('login.donthave')}}</p>
-            <a href="{{ route('register') }}" class="font-bold"> {{__('login.signup')}}</a>
+          <div class="mt-6 flex gap-2">
+            <p class="text-sm">{{__('login.donthave')}}</p>
+            <a href="{{ route('register') }}" class="font-bold text-sm"> {{__('login.signup')}}</a>
           </div>
         </div>
       </div>
     </section>
-    <x-vaccine class="hidden sm:block"></x-vaccine>
+    <x-vaccine class="hidden md:block"></x-vaccine>
   </div>
 </x-layout>

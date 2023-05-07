@@ -18,15 +18,15 @@ class StatisticsFactory extends Factory
 	public function definition(): array
 	{
 		$faker_ka = Faker::create('ka_GE');
-		$location = explode(' ', $faker_ka->word());
+		$location = explode(' ', $faker_ka->country());
 		return [
 			'location'=> [
-				'en' => $this->faker->word(),
-				'ka' => $location,
+				'en' => $this->faker->country(),
+				'ka' => $location[0],
 			],
-			'new_cases' => $this->faker->randomNumber(5, false),
-			'deaths'    => $this->faker->randomNumber(5, false),
-			'recovered' => $this->faker->randomNumber(5, false),
+			'new_cases' => $this->faker->randomNumber(4, false),
+			'deaths'    => $this->faker->randomNumber(4, false),
+			'recovered' => $this->faker->randomNumber(4, false),
 		];
 	}
 }

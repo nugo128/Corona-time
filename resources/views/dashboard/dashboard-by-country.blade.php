@@ -1,13 +1,13 @@
 <x-layout>
     <div class="flex flex-col px-3 md:px-14 py-5">
-        <x-dashboard-header header='{{__("statistics.stats-by-c")}}'></x-dashboard-header>
+        <x-dashboard-header header='{{__("statistics.stats_by_country")}}'></x-dashboard-header>
         <div class="flex mt-8 gap-10">
             <a href="{{ route('dashboard') }}" class="h-5">
                 <p class="pb-1">{{__("statistics.worldwide")}}</p>
 
             </a>
             <a href="">
-                <p class="font-bold">{{__("statistics.by-country")}}</p><span></span>
+                <p class="font-bold">{{__("statistics.by_country")}}</p><span></span>
                 <div class="bg-black w-full pt-1 mt-1"></div>
             </a>
         </div>

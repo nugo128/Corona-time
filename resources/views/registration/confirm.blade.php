@@ -7,7 +7,7 @@
 
 <div class="flex flex-col items-center">
     <img src="{{asset('images/icons8-checkmark.gif')}}" alt="check">
-<p>{{__('registration.confirm-sent')}}</p>
+<p>{{__('registration.confirm_sent')}}</p>
 </div>
 
 @else

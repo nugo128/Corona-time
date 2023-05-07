@@ -7,7 +7,7 @@
                 <div class="bg-black w-full pt-1"></div>
             </a>
             <a href="{{route('dashboard-by-c')}}">
-                <p>{{__("statistics.by-country")}}</p><span></span>
+                <p>{{__("statistics.by_country")}}</p><span></span>
             </a>
         </div>
 

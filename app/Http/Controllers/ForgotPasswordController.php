@@ -10,16 +10,6 @@ use Illuminate\Support\Str;
 
 class ForgotPasswordController extends Controller
 {
-	public function showLinkRequestForm()
-	{
-		return view('password.email');
-	}
-
-	public function send()
-	{
-		return view('password.email-sent');
-	}
-
 	public function sendResetLinkEmail(Request $request)
 	{
 		$this->validateEmail($request);
@@ -47,8 +37,8 @@ class ForgotPasswordController extends Controller
 		return back()->with('status', trans($response));
 	}
 
-protected function validateEmail(Request $request)
-{
-	$request->validate(['email' => 'required|email']);
-}
+	protected function validateEmail(Request $request)
+	{
+		$request->validate(['email' => 'required|email']);
+	}
 }

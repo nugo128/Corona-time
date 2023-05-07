@@ -15,12 +15,6 @@ class ResetPasswordController extends Controller
 		);
 	}
 
-	public function change()
-	{
-		return view('password.password-changed');
-	}
-
-
 	public function reset(Request $request)
 	{
 		$request->validate([

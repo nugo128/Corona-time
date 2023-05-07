@@ -2,24 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ForgotPasswordRequest;
 use App\Mail\ResetPasswordEmail;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class ForgotPasswordController extends Controller
 {
-	public function sendResetLinkEmail(Request $request)
+	public function sendResetLinkEmail(ForgotPasswordRequest $request)
 	{
-		$this->validateEmail($request);
-
-		$user = User::where('email', $request->email)->first();
-
-		if (!$user) {
-			return back()->withErrors(['email' => trans('passwords.user')]);
-		}
-
+		$email = $request->validated()['email'];
+		$user = User::where('email', $email)->first();
 		$token = Str::random(60);
 
 		$user->reset_token = $token;
@@ -27,7 +21,7 @@ class ForgotPasswordController extends Controller
 
 		$resetUrl = url('password/reset', $token);
 
-		Mail::to($user->email)->send(new ResetPasswordEmail($resetUrl));
+		Mail::to($email)->send(new ResetPasswordEmail($resetUrl));
 
 		return redirect()->route('send');
 	}
@@ -35,10 +29,5 @@ class ForgotPasswordController extends Controller
 	protected function sendResetLinkResponse($response)
 	{
 		return back()->with('status', trans($response));
-	}
-
-	protected function validateEmail(Request $request)
-	{
-		$request->validate(['email' => 'required|email']);
 	}
 }

@@ -5,9 +5,9 @@ return [
 	'stats-by-c'                => 'Statistics by country',
 	'worldwide'                 => 'Worldwide',
 	'search'                    => 'search by country',
-    'location'                  => 'location',
+	'location'                  => 'location',
 	'by-country'                => 'By Country',
-	'new'                       => 'Nrw Cases',
+	'new'                       => 'New Cases',
 	'recovered'                 => 'Recovered',
 	'deaths'                    => 'Deaths',
 ];

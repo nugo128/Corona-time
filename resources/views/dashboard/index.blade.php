@@ -3,7 +3,7 @@
         <x-dashboard-header header='{{__("statistics.worldwide-stats")}}'></x-dashboard-header>
         <div class="flex mt-8 gap-10">
             <a href="#" class="h-5">
-                <p class="pb-1">{{__("statistics.worldwide")}}</p>
+                <p class="pb-1 font-bold">{{__("statistics.worldwide")}}</p>
                 <div class="bg-black w-full pt-1"></div>
             </a>
             <a href="{{route('dashboard-by-c')}}">
@@ -34,8 +34,8 @@
                         </linearGradient>
                     </defs>
                 </svg>
-                <p>{{__("statistics.new")}}</p>
-                <p>{{ $newCases }}</p>
+                <p class="font-bold">{{__("statistics.new")}}</p>
+                <p class="text-4xl text-blue-800">{{ $newCases }}</p>
             </div>
             <div class="col-span-1 flex flex-col gap-5 justify-center items-center bg-green-50 py-10 w-full">
 
@@ -58,8 +58,8 @@
                         </linearGradient>
                     </defs>
                 </svg>
-                <p>{{__("statistics.recovered")}}</p>
-                <p>{{ $recovered }}</p>
+                <p class="font-bold">{{__("statistics.recovered")}}</p>
+                <p class="text-4xl text-green-500">{{ $recovered }}</p>
             </div>
             <div class="col-span-1 flex flex-col gap-5 justify-center items-center bg-yellow-50 py-10 w-full">
                 <svg width="90" height="51" viewBox="0 0 90 51" fill="none"
@@ -82,9 +82,8 @@
                         </linearGradient>
                     </defs>
                 </svg>
-                <p>{{__("statistics.deaths")}}</p>
-                <p>{{ $deaths }}</p>
-
+                <p class="font-bold">{{__("statistics.deaths")}}</p>
+                <p class="text-4xl text-yellow-500">{{ $deaths }}</p>
             </div>
         </div>
     </div>

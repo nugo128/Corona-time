@@ -13,6 +13,9 @@ module.exports = {
       },
       height:{
         'screenx': '60vh'
+      },
+      fontSize:{
+        '2xs': '0.4rem'
       }
     },
   },

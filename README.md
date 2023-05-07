@@ -69,11 +69,12 @@ DB_USERNAME=*****
 ```
 DB_PASSWORD=*****
 ```
-after setting up .env file, execute:
+5. Now execute in the root of you project following:
 ```
-php artisan config:cache
+  php artisan key:generate
 ```
-
+Which generates auth key.
+Now, you should be good to go!
 ## Migration
 if you've completed getting started section, then migrating database if fairly simple process, just execute:
 ```

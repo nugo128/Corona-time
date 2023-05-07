@@ -7,14 +7,14 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
-class MyCommand extends Command
+class GetDataFromApi extends Command
 {
 	/**
 	 * The name and signature of the console command.
 	 *
 	 * @var string
 	 */
-	protected $signature = 'renew-data';
+	protected $signature = 'get-data-from-api';
 
 	/**
 	 * The console command description.

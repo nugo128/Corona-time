@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ResetPasswordRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -15,22 +16,13 @@ class ResetPasswordController extends Controller
 		);
 	}
 
-	public function reset(Request $request)
+	public function reset(ResetPasswordRequest $request)
 	{
-		$request->validate([
-			'token'    => 'required',
-			'password' => 'required|min:3|confirmed',
-		]);
+		$attributes = $request->validated();
 
-		$user = User::where('reset_token', $request->token)->first();
+		$user = User::where('reset_token', $attributes['token'])->first();
 
-		if (!$user) {
-			return back()->withErrors([
-				'email' => ['Invalid reset token or token has expired.'],
-			]);
-		}
-
-		$user->password = Hash::make($request->password);
+		$user->password = Hash::make($attributes['password']);
 		$user->reset_token = '';
 		$user->save();
 
